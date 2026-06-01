@@ -73,6 +73,7 @@ js/bracket.js       — Bracket tab renderer + knockout score entry handlers
 - R32 dates were corrected from original (M74 Jun 29, M79 Jun 30, M81–82 Jul 1, M85 Jul 2)
 - QF dates: M97 Jul 9, M98 Jul 10, M99–100 Jul 11
 - 3rd place playoff venue updated to Hard Rock Stadium, Miami Gardens (Jul 18)
+- Hosted at https://gustavodiaz.org/wc26/ via GitHub Pages (repo: https://github.com/gustavo-diaz/wc26)
 - All results persist in localStorage under key `wc2026_results` (offline mode) or Firebase Realtime Database (shared mode)
 
 ## Storage / Firebase setup
