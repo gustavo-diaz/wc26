@@ -76,15 +76,15 @@ function renderCalendar(activeGroup) {
       const cardClass = ['match-card', hasResult ? 'has-result' : '', isToday && !hasResult ? 'today' : ''].filter(Boolean).join(' ');
 
       body += `<div class="${cardClass}" id="card-${m.id}">
+        <div class="match-meta">
+          <span class="group-badge">GRP ${m.group}</span>
+          ${m.time} &middot; ${m.venue}
+        </div>
         <div class="team-side home">
           ${flagHTML(m.home)}
           <span class="team-name${homeWinner ? ' winner' : ''}">${m.home}</span>
         </div>
         <div class="match-center">
-          <div class="match-meta">
-            <span class="group-badge">GRP ${m.group}</span>
-            ${m.time} &middot; ${m.venue}
-          </div>
           <div class="score-inputs">
             <input class="score-input" type="number" min="0" max="30" value="${hGoals}" id="h-${m.id}" placeholder="–">
             <span class="score-sep">:</span>
@@ -156,15 +156,15 @@ function buildKnockoutCalendarHTML() {
       const awaySafe = awayName ? awayName.replace(/'/g, "\\'") : '';
 
       html += `<div class="${cardClass}" id="card-${m.id}">
+        <div class="match-meta">
+          <span class="ko-badge">${roundLabel}</span>
+          ${m.time} &middot; ${m.venue}
+        </div>
         <div class="team-side home">
           ${homeName ? flagHTML(homeName) : ''}
           <span class="team-name${homeWinner ? ' winner' : ''}${!homeName ? ' ko-tbd' : ''}">${homeLabel}</span>
         </div>
         <div class="match-center">
-          <div class="match-meta">
-            <span class="ko-badge">${roundLabel}</span>
-            ${m.time} &middot; ${m.venue}
-          </div>
           <div class="score-inputs">
             <input class="score-input" type="number" min="0" max="30" value="${hGoals}" id="cal-ko-h-${m.id}" placeholder="–"${!bothKnown ? ' disabled' : ''}>
             <span class="score-sep">:</span>
