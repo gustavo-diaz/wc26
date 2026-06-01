@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>WC 2026 Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="site-title">⚽ WC 2026</div>
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="calendar">📅 Calendar</button>
+      <button class="tab-btn" data-tab="groups">📊 Groups</button>
+      <button class="tab-btn" data-tab="bracket">🏆 Bracket</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="tab-calendar" class="tab-panel active"></section>
+  <section id="tab-groups"   class="tab-panel"></section>
+  <section id="tab-bracket"  class="tab-panel"></section>
+</main>
+
+<!-- Firebase SDK (compat). Get exact version + config from your Firebase console. -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/groups.js"></script>
+<script src="js/bracket.js"></script>
+<script>
+  // Tab navigation
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn, .tab-panel').forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Re-render all tabs (called after any result change)
+  function refreshAll() {
+    renderCalendar(window._calFilter || 'ALL');
+    renderGroups();
+    renderBracket();
+  }
+
+  // Initial render
+  refreshAll();
+</script>
+
+</body>
+</html>
