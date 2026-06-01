@@ -351,10 +351,6 @@ main {
 }
 .clear-btn:hover { color: var(--red); }
 
-/* ── Calendar tab — larger country names & flags only ───────────────────────── */
-#tab-calendar .team-name { font-size: 28px; }
-#tab-calendar .flag-wrap { font-size: 40px; }
-#tab-calendar .flag-img  { width: 48px; height: 36px; }
 
 /* ── Flag ───────────────────────────────────────────────────────────────────── */
 .flag-wrap {

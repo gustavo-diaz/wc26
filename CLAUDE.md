@@ -47,7 +47,6 @@ js/bracket.js       — Bracket tab renderer + knockout score entry handlers
   - Unresolved teams show "TBD" with no flag placeholder
   - Score inputs disabled until both teams are confirmed
   - Round badge (amber) replaces group badge
-- Only country names (28px) and flags (40px emoji) are enlarged; all other text/buttons use dashboard defaults
 
 ### Groups tab
 - 12 group tables (A–L) with live standings
