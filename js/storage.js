@@ -10,16 +10,15 @@
 //
 // Leave FIREBASE_CONFIG null to run in offline/localStorage mode (for local dev).
 
-const FIREBASE_CONFIG = null;
-// const FIREBASE_CONFIG = {
-//   apiKey:            'YOUR_API_KEY',
-//   authDomain:        'YOUR_PROJECT.firebaseapp.com',
-//   databaseURL:       'https://YOUR_PROJECT-default-rtdb.firebaseio.com',
-//   projectId:         'YOUR_PROJECT',
-//   storageBucket:     'YOUR_PROJECT.appspot.com',
-//   messagingSenderId: 'YOUR_SENDER_ID',
-//   appId:             'YOUR_APP_ID',
-// };
+const FIREBASE_CONFIG = {
+  apiKey:            'AIzaSyAI4-8sH8etwJXia2TJ0dx_YNPytzTub9E',
+  authDomain:        'wc2026-8a015.firebaseapp.com',
+  databaseURL:       'https://wc2026-8a015-default-rtdb.firebaseio.com',
+  projectId:         'wc2026-8a015',
+  storageBucket:     'wc2026-8a015.firebasestorage.app',
+  messagingSenderId: '817233646497',
+  appId:             '1:817233646497:web:4a1c5de529a95126ecb1e0',
+};
 
 const Storage = (() => {
   const LS_KEY  = 'wc2026_results';
