@@ -720,6 +720,38 @@ main {
 .champion-label { color: var(--muted); font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
 .champion-team { color: var(--gold); font-size: 14px; font-weight: 700; text-align: center; }
 
+/* ── Back to top ────────────────────────────────────────────────────────────── */
+#back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border: none;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateY(8px);
+  z-index: 200;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#back-to-top:hover { opacity: 0.85; }
+
 /* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .match-center { min-width: auto; }

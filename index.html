@@ -28,6 +28,8 @@
   <section id="tab-bracket"  class="tab-panel"></section>
 </main>
 
+<button id="back-to-top" aria-label="Back to top">↑</button>
+
 <!-- Firebase SDK (compat). Get exact version + config from your Firebase console. -->
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
@@ -57,6 +59,13 @@
 
   // Initial render
   refreshAll();
+
+  // Back-to-top button
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 150);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 
 </body>
