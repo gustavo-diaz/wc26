@@ -73,21 +73,23 @@ const Storage = (() => {
   let _cache = _defaults();
   let _ready = false;
 
-  _ref.on('value', snapshot => {
-    const data = snapshot.val();
-    if (!data || data.version !== VERSION) {
-      _cache = _defaults();
-    } else {
-      _cache = {
-        version:         data.version,
-        groupResults:    data.groupResults    || {},
-        knockoutResults: data.knockoutResults || {},
-        bracketOverrides: data.bracketOverrides || {},
-      };
-    }
-    _ready = true;
-    if (typeof refreshAll === 'function') refreshAll();
-  });
+  firebase.auth().signInAnonymously().then(() => {
+    _ref.on('value', snapshot => {
+      const data = snapshot.val();
+      if (!data || data.version !== VERSION) {
+        _cache = _defaults();
+      } else {
+        _cache = {
+          version:         data.version,
+          groupResults:    data.groupResults    || {},
+          knockoutResults: data.knockoutResults || {},
+          bracketOverrides: data.bracketOverrides || {},
+        };
+      }
+      _ready = true;
+      if (typeof refreshAll === 'function') refreshAll();
+    });
+  }).catch(err => console.error('Firebase auth failed', err));
 
   function _write(updater) {
     updater(_cache);
