@@ -420,7 +420,6 @@ main {
   display: flex;
   align-items: center;
   gap: 6px;
-  white-space: nowrap;
 }
 
 .standings-table .pos { color: var(--muted); font-weight: 600; width: 24px; }
