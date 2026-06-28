@@ -178,20 +178,20 @@ const GROUP_MATCHES = [
 const KNOCKOUT_MATCHES = [
   // ── Round of 32 ────────────────────────────────────────────────────────
   { id: 'r32_m73', round: 'r32', matchNum: 73, date: '2026-06-28', time: '2:00 PM CDT',  homeSource: '2A',       awaySource: '2B',          feedsMatch: 'r16_m89', feedsPos: 'home', venue: 'SoFi Stadium, Inglewood' },
-  { id: 'r32_m74', round: 'r32', matchNum: 74, date: '2026-06-29', time: '3:30 PM CDT',  homeSource: '1E',       awaySource: '3rd:ABCDF',   feedsMatch: 'r16_m90', feedsPos: 'away', venue: 'Gillette Stadium, Foxborough' },
+  { id: 'r32_m74', round: 'r32', matchNum: 74, date: '2026-06-29', time: '3:30 PM CDT',  homeSource: '1E',       awaySource: '3rd:D',       feedsMatch: 'r16_m90', feedsPos: 'away', venue: 'Gillette Stadium, Foxborough' },
   { id: 'r32_m75', round: 'r32', matchNum: 75, date: '2026-06-29', time: '8:00 PM CDT',  homeSource: '1F',       awaySource: '2C',          feedsMatch: 'r16_m89', feedsPos: 'away', venue: 'Estadio BBVA, Guadalupe' },
   { id: 'r32_m76', round: 'r32', matchNum: 76, date: '2026-06-29', time: '12:00 PM CDT', homeSource: '1C',       awaySource: '2F',          feedsMatch: 'r16_m91', feedsPos: 'home', venue: 'NRG Stadium, Houston' },
-  { id: 'r32_m77', round: 'r32', matchNum: 77, date: '2026-06-30', time: '4:00 PM CDT',  homeSource: '1I',       awaySource: '3rd:CDFGH',   feedsMatch: 'r16_m90', feedsPos: 'home', venue: 'MetLife Stadium, East Rutherford' },
+  { id: 'r32_m77', round: 'r32', matchNum: 77, date: '2026-06-30', time: '4:00 PM CDT',  homeSource: '1I',       awaySource: '3rd:F',       feedsMatch: 'r16_m90', feedsPos: 'home', venue: 'MetLife Stadium, East Rutherford' },
   { id: 'r32_m78', round: 'r32', matchNum: 78, date: '2026-06-30', time: '12:00 PM CDT', homeSource: '2E',       awaySource: '2I',          feedsMatch: 'r16_m91', feedsPos: 'away', venue: 'AT&T Stadium, Arlington' },
-  { id: 'r32_m79', round: 'r32', matchNum: 79, date: '2026-06-30', time: '8:00 PM CDT',  homeSource: '1A',       awaySource: '3rd:CEFHI',   feedsMatch: 'r16_m92', feedsPos: 'home', venue: 'Estadio Azteca, Mexico City' },
-  { id: 'r32_m80', round: 'r32', matchNum: 80, date: '2026-07-01', time: '11:00 AM CDT', homeSource: '1L',       awaySource: '3rd:EHIJK',   feedsMatch: 'r16_m92', feedsPos: 'away', venue: 'Mercedes-Benz Stadium, Atlanta' },
-  { id: 'r32_m81', round: 'r32', matchNum: 81, date: '2026-07-01', time: '7:00 PM CDT',  homeSource: '1D',       awaySource: '3rd:BEFIJ',   feedsMatch: 'r16_m94', feedsPos: 'home', venue: "Levi's Stadium, Santa Clara" },
-  { id: 'r32_m82', round: 'r32', matchNum: 82, date: '2026-07-01', time: '3:00 PM CDT',  homeSource: '1G',       awaySource: '3rd:AEHIJ',   feedsMatch: 'r16_m94', feedsPos: 'away', venue: 'Lumen Field, Seattle' },
+  { id: 'r32_m79', round: 'r32', matchNum: 79, date: '2026-06-30', time: '8:00 PM CDT',  homeSource: '1A',       awaySource: '3rd:E',       feedsMatch: 'r16_m92', feedsPos: 'home', venue: 'Estadio Azteca, Mexico City' },
+  { id: 'r32_m80', round: 'r32', matchNum: 80, date: '2026-07-01', time: '11:00 AM CDT', homeSource: '1L',       awaySource: '3rd:K',       feedsMatch: 'r16_m92', feedsPos: 'away', venue: 'Mercedes-Benz Stadium, Atlanta' },
+  { id: 'r32_m81', round: 'r32', matchNum: 81, date: '2026-07-01', time: '7:00 PM CDT',  homeSource: '1D',       awaySource: '3rd:B',       feedsMatch: 'r16_m94', feedsPos: 'home', venue: "Levi's Stadium, Santa Clara" },
+  { id: 'r32_m82', round: 'r32', matchNum: 82, date: '2026-07-01', time: '3:00 PM CDT',  homeSource: '1G',       awaySource: '3rd:I',       feedsMatch: 'r16_m94', feedsPos: 'away', venue: 'Lumen Field, Seattle' },
   { id: 'r32_m83', round: 'r32', matchNum: 83, date: '2026-07-02', time: '6:00 PM CDT',  homeSource: '2K',       awaySource: '2L',          feedsMatch: 'r16_m93', feedsPos: 'home', venue: 'BMO Field, Toronto' },
   { id: 'r32_m84', round: 'r32', matchNum: 84, date: '2026-07-02', time: '2:00 PM CDT',  homeSource: '1H',       awaySource: '2J',          feedsMatch: 'r16_m93', feedsPos: 'away', venue: 'SoFi Stadium, Inglewood' },
-  { id: 'r32_m85', round: 'r32', matchNum: 85, date: '2026-07-02', time: '10:00 PM CDT', homeSource: '1B',       awaySource: '3rd:EFGIJ',   feedsMatch: 'r16_m96', feedsPos: 'home', venue: 'BC Place, Vancouver' },
+  { id: 'r32_m85', round: 'r32', matchNum: 85, date: '2026-07-02', time: '10:00 PM CDT', homeSource: '1B',       awaySource: '3rd:J',       feedsMatch: 'r16_m96', feedsPos: 'home', venue: 'BC Place, Vancouver' },
   { id: 'r32_m86', round: 'r32', matchNum: 86, date: '2026-07-03', time: '5:00 PM CDT',  homeSource: '1J',       awaySource: '2H',          feedsMatch: 'r16_m95', feedsPos: 'home', venue: 'Hard Rock Stadium, Miami Gardens' },
-  { id: 'r32_m87', round: 'r32', matchNum: 87, date: '2026-07-03', time: '8:30 PM CDT',  homeSource: '1K',       awaySource: '3rd:DEIJL',   feedsMatch: 'r16_m96', feedsPos: 'away', venue: 'Arrowhead Stadium, Kansas City' },
+  { id: 'r32_m87', round: 'r32', matchNum: 87, date: '2026-07-03', time: '8:30 PM CDT',  homeSource: '1K',       awaySource: '3rd:L',       feedsMatch: 'r16_m96', feedsPos: 'away', venue: 'Arrowhead Stadium, Kansas City' },
   { id: 'r32_m88', round: 'r32', matchNum: 88, date: '2026-07-03', time: '1:00 PM CDT',  homeSource: '2D',       awaySource: '2G',          feedsMatch: 'r16_m95', feedsPos: 'away', venue: 'AT&T Stadium, Arlington' },
 
   // ── Round of 16 ───────────────────────────────────────────────────────
@@ -221,17 +221,17 @@ const KNOCKOUT_MATCHES = [
   { id: 'final_m104', round: 'final', matchNum: 104, date: '2026-07-19', time: '2:00 PM CDT',  homeSource: 'W:sf_m101', awaySource: 'W:sf_m102', feedsMatch: null, venue: 'MetLife Stadium, East Rutherford' },
 ];
 
-// Eligible source groups for each 3rd-place slot in the R32.
-// The greedy slot-assignment algorithm uses this (most-constrained slots first).
+// Fixed assignment of 3rd-place groups to R32 slots for the 2026 World Cup.
+// Source: official FIFA draw / matchups.csv
 const THIRD_PLACE_ELIGIBILITY = {
-  'r32_m74': ['A', 'B', 'C', 'D', 'F'],
-  'r32_m77': ['C', 'D', 'F', 'G', 'H'],
-  'r32_m79': ['C', 'E', 'F', 'H', 'I'],
-  'r32_m80': ['E', 'H', 'I', 'J', 'K'],
-  'r32_m81': ['B', 'E', 'F', 'I', 'J'],
-  'r32_m82': ['A', 'E', 'H', 'I', 'J'],
-  'r32_m85': ['E', 'F', 'G', 'I', 'J'],
-  'r32_m87': ['D', 'E', 'I', 'J', 'L'],
+  'r32_m74': ['D'],
+  'r32_m77': ['F'],
+  'r32_m79': ['E'],
+  'r32_m80': ['K'],
+  'r32_m81': ['B'],
+  'r32_m82': ['I'],
+  'r32_m85': ['J'],
+  'r32_m87': ['L'],
 };
 
 // Fair play points from group stage (lower = better). Update after each matchday.
