@@ -246,6 +246,16 @@ function computeKnockoutBracket() {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
+function sourceTBDLabel(src) {
+  if (!src) return 'TBD';
+  if (/^[12][A-L]$/.test(src)) return src;          // "1A" → "1A", "2B" → "2B"
+  if (src.startsWith('3rd:')) return '3' + src[4];   // "3rd:D" → "3D"
+  const num = src.match(/_m(\d+)/);
+  if (src.startsWith('W:')) return num ? 'W' + num[1] : 'W?';  // "W:r32_m73" → "W73"
+  if (src.startsWith('L:')) return num ? 'L' + num[1] : 'L?';  // "L:sf_m101" → "L101"
+  return 'TBD';
+}
+
 function flagHTML(teamName) {
   if (!teamName || teamName === 'TBD') return '<span class="flag-tbd">?</span>';
   const t = TEAMS[teamName];

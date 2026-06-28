@@ -133,8 +133,8 @@ function buildKnockoutCalendarHTML() {
       const resolved = bracket[m.id] || {};
       const homeName = resolved.home || null;
       const awayName = resolved.away || null;
-      const homeLabel = homeName || 'TBD';
-      const awayLabel = awayName || 'TBD';
+      const homeLabel = homeName || sourceTBDLabel(m.homeSource);
+      const awayLabel = awayName || sourceTBDLabel(m.awaySource);
       const bothKnown = !!(homeName && awayName);
 
       const r = koResults[m.id];

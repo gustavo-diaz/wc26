@@ -8,7 +8,7 @@ function renderBracket() {
 
   const rounds = [
     { key: 'r32',   label: 'Round of 32',   ids: ['r32_m74','r32_m77','r32_m73','r32_m75','r32_m83','r32_m84','r32_m81','r32_m82','r32_m76','r32_m78','r32_m79','r32_m80','r32_m86','r32_m88','r32_m85','r32_m87'] },
-    { key: 'r16',   label: 'Round of 16',   ids: ['r16_m89','r16_m90','r16_m93','r16_m94','r16_m91','r16_m92','r16_m95','r16_m96'] },
+    { key: 'r16',   label: 'Round of 16',   ids: ['r16_m90','r16_m89','r16_m93','r16_m94','r16_m91','r16_m92','r16_m95','r16_m96'] },
     { key: 'qf',    label: 'Quarterfinals', ids: ['qf_m97','qf_m98','qf_m99','qf_m100'] },
     { key: 'sf',    label: 'Semifinals',    ids: ['sf_m101','sf_m102'] },
   ];
@@ -82,12 +82,12 @@ function renderSlot(m, bracket) {
       </div>
       <div class="${homeClass}">
         ${homeName ? flagHTML(homeName) : ''}
-        <span>${homeName || 'TBD'}</span>
+        <span>${homeName || sourceTBDLabel(m.homeSource)}</span>
         ${hScore !== '' ? `<span class="slot-score">${hScore}</span>` : ''}
       </div>
       <div class="${awayClass}">
         ${awayName ? flagHTML(awayName) : ''}
-        <span>${awayName || 'TBD'}</span>
+        <span>${awayName || sourceTBDLabel(m.awaySource)}</span>
         ${aScore !== '' ? `<span class="slot-score">${aScore}</span>` : ''}
       </div>
     </div>`;
