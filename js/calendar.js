@@ -1,6 +1,6 @@
 'use strict';
 
-window._calFilter = 'ALL';
+window._calFilter = 'KNOCKOUT';
 
 function parseTime(timeStr) {
   const m = timeStr && timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
