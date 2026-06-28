@@ -139,6 +139,12 @@ function rankThirdPlace(allStandings) {
       if (b.Pts !== a.Pts) return b.Pts - a.Pts;
       if (b.GD  !== a.GD)  return b.GD  - a.GD;
       if (b.GF  !== a.GF)  return b.GF  - a.GF;
+      const fpA = FAIR_PLAY_SCORES[a.team] ?? 0;
+      const fpB = FAIR_PLAY_SCORES[b.team] ?? 0;
+      if (fpA !== fpB) return fpA - fpB;               // lower = fewer cards = better
+      const rankA = FIFA_WORLD_RANKINGS[a.team] ?? 999;
+      const rankB = FIFA_WORLD_RANKINGS[b.team] ?? 999;
+      if (rankA !== rankB) return rankA - rankB;        // lower number = better
       return a.team.localeCompare(b.team);
     });
 }
