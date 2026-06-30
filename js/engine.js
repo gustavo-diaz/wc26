@@ -237,6 +237,8 @@ function computeKnockoutBracket() {
       away,
       homeGoals: r?.homeGoals ?? null,
       awayGoals: r?.awayGoals ?? null,
+      homePens:  r?.homePens  ?? null,
+      awayPens:  r?.awayPens  ?? null,
       winner: r?.winner || null,
     };
   });

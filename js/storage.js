@@ -52,8 +52,12 @@ const Storage = (() => {
       },
       clearGroupResult(id)  { const d = _load(); delete d.groupResults[id]; _save(d); },
 
-      setKnockoutResult(id, homeGoals, awayGoals, winner) {
-        const d = _load(); d.knockoutResults[id] = { homeGoals: Number(homeGoals), awayGoals: Number(awayGoals), winner }; _save(d);
+      setKnockoutResult(id, homeGoals, awayGoals, winner, homePens, awayPens) {
+        const d = _load();
+        const r = { homeGoals: Number(homeGoals), awayGoals: Number(awayGoals), winner };
+        if (homePens != null) { r.homePens = Number(homePens); r.awayPens = Number(awayPens); }
+        d.knockoutResults[id] = r;
+        _save(d);
       },
       clearKnockoutResult(id) { const d = _load(); delete d.knockoutResults[id]; _save(d); },
 
@@ -106,8 +110,12 @@ const Storage = (() => {
     },
     clearGroupResult(id)  { _write(c => { delete c.groupResults[id]; }); },
 
-    setKnockoutResult(id, homeGoals, awayGoals, winner) {
-      _write(c => { c.knockoutResults[id] = { homeGoals: Number(homeGoals), awayGoals: Number(awayGoals), winner }; });
+    setKnockoutResult(id, homeGoals, awayGoals, winner, homePens, awayPens) {
+      _write(c => {
+        const r = { homeGoals: Number(homeGoals), awayGoals: Number(awayGoals), winner };
+        if (homePens != null) { r.homePens = Number(homePens); r.awayPens = Number(awayPens); }
+        c.knockoutResults[id] = r;
+      });
     },
     clearKnockoutResult(id) { _write(c => { delete c.knockoutResults[id]; }); },
 

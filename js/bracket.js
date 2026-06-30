@@ -90,6 +90,7 @@ function renderSlot(m, bracket) {
         <span>${awayName || sourceTBDLabel(m.awaySource)}</span>
         ${aScore !== '' ? `<span class="slot-score">${aScore}</span>` : ''}
       </div>
+      ${m.homePens != null ? `<div class="slot-pens">(${m.homePens}–${m.awayPens} pens)</div>` : ''}
     </div>`;
 
   if (isEntryOpen) {
@@ -106,19 +107,43 @@ function renderSlot(m, bracket) {
 
 function renderKoEntryPanel(m) {
   const round = ROUND_LABELS[m.round] || m.round;
+  const hasTiedResult = m.homePens != null;
+  const pensDisplay = hasTiedResult ? '' : 'none';
+  const hPensVal = hasTiedResult ? m.homePens : 0;
+  const aPensVal = hasTiedResult ? m.awayPens : 0;
+  const hVal = m.homeGoals != null ? m.homeGoals : 0;
+  const aVal = m.awayGoals != null ? m.awayGoals : 0;
   return `<div class="ko-entry-panel">
     <div class="ko-entry-title">Enter result — ${round} M${m.matchNum}</div>
     <div class="ko-entry-row">
       <div class="ko-team-label">${flagHTML(m.home)} ${m.home}</div>
-      <input class="ko-score-input" type="number" min="0" max="30" id="ko-h-${m.id}" value="0">
+      <input class="ko-score-input" type="number" min="0" max="30" id="ko-h-${m.id}" value="${hVal}" oninput="checkKoTie('${m.id}')">
     </div>
     <div class="ko-entry-row">
       <div class="ko-team-label">${flagHTML(m.away)} ${m.away}</div>
-      <input class="ko-score-input" type="number" min="0" max="30" id="ko-a-${m.id}" value="0">
+      <input class="ko-score-input" type="number" min="0" max="30" id="ko-a-${m.id}" value="${aVal}" oninput="checkKoTie('${m.id}')">
+    </div>
+    <div id="ko-pens-${m.id}" class="ko-pens-section" style="display:${pensDisplay}">
+      <div class="ko-pens-label">Penalty shootout</div>
+      <div class="ko-entry-row">
+        <div class="ko-team-label">${flagHTML(m.home)} ${m.home}</div>
+        <input class="ko-score-input" type="number" min="0" max="30" id="ko-hp-${m.id}" value="${hPensVal}">
+      </div>
+      <div class="ko-entry-row">
+        <div class="ko-team-label">${flagHTML(m.away)} ${m.away}</div>
+        <input class="ko-score-input" type="number" min="0" max="30" id="ko-ap-${m.id}" value="${aPensVal}">
+      </div>
     </div>
     <button class="ko-save-btn" onclick="saveKoResult('${m.id}', '${m.home}', '${m.away}')">Save Result</button>
     <button class="ko-cancel-btn" onclick="cancelKoEntry()">Cancel</button>
   </div>`;
+}
+
+function checkKoTie(matchId) {
+  const hg = parseInt(document.getElementById('ko-h-' + matchId)?.value, 10);
+  const ag = parseInt(document.getElementById('ko-a-' + matchId)?.value, 10);
+  const sec = document.getElementById('ko-pens-' + matchId);
+  if (sec) sec.style.display = (!isNaN(hg) && !isNaN(ag) && hg === ag) ? '' : 'none';
 }
 
 function openKoEntry(matchId) {
@@ -146,14 +171,24 @@ function saveKoResult(matchId, homeName, awayName) {
 
   if (isNaN(hg) || isNaN(ag) || hg < 0 || ag < 0) return;
 
-  // Knockouts require a winner — no draws allowed
+  let winner, homePens, awayPens;
   if (hg === ag) {
-    alert('Knockout matches cannot end in a draw. Please enter the score after extra time / penalties.');
-    return;
+    const hpInput = document.getElementById('ko-hp-' + matchId);
+    const apInput = document.getElementById('ko-ap-' + matchId);
+    if (!hpInput || !apInput) return;
+    homePens = parseInt(hpInput.value, 10);
+    awayPens = parseInt(apInput.value, 10);
+    if (isNaN(homePens) || isNaN(awayPens) || homePens < 0 || awayPens < 0) return;
+    if (homePens === awayPens) {
+      alert('Penalty shootout cannot end in a tie. Please re-enter the penalty scores.');
+      return;
+    }
+    winner = homePens > awayPens ? homeName : awayName;
+  } else {
+    winner = hg > ag ? homeName : awayName;
   }
 
-  const winner = hg > ag ? homeName : awayName;
-  Storage.setKnockoutResult(matchId, hg, ag, winner);
+  Storage.setKnockoutResult(matchId, hg, ag, winner, homePens, awayPens);
   _activeKoEntry = null;
   refreshAll();
 }

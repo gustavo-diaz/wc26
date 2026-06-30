@@ -148,6 +148,7 @@ function buildKnockoutCalendarHTML() {
 
       const hGoals = hasResult ? r.homeGoals : '';
       const aGoals = hasResult ? r.awayGoals : '';
+      const hasPens = hasResult && r.homePens != null;
       const roundLabel = ROUND_LABELS[m.round] || m.round;
 
       const cardClass = ['match-card', hasResult ? 'has-result' : '', isToday && !hasResult ? 'today' : ''].filter(Boolean).join(' ');
@@ -166,9 +167,15 @@ function buildKnockoutCalendarHTML() {
         </div>
         <div class="match-center">
           <div class="score-inputs">
-            <input class="score-input" type="number" min="0" max="30" value="${hGoals}" id="cal-ko-h-${m.id}" placeholder="–"${!bothKnown ? ' disabled' : ''}>
+            <input class="score-input" type="number" min="0" max="30" value="${hGoals}" id="cal-ko-h-${m.id}" placeholder="–"${!bothKnown ? ' disabled' : ''} oninput="checkKoCalTie('${m.id}')">
             <span class="score-sep">:</span>
-            <input class="score-input" type="number" min="0" max="30" value="${aGoals}" id="cal-ko-a-${m.id}" placeholder="–"${!bothKnown ? ' disabled' : ''}>
+            <input class="score-input" type="number" min="0" max="30" value="${aGoals}" id="cal-ko-a-${m.id}" placeholder="–"${!bothKnown ? ' disabled' : ''} oninput="checkKoCalTie('${m.id}')">
+          </div>
+          <div id="cal-ko-pens-${m.id}" class="cal-pens-row" style="display:${hasPens ? '' : 'none'}">
+            <span class="cal-pens-label">Pens</span>
+            <input class="score-input cal-pens-input" type="number" min="0" max="30" id="cal-ko-hp-${m.id}" value="${hasPens ? r.homePens : 0}"${!bothKnown ? ' disabled' : ''}>
+            <span class="score-sep">–</span>
+            <input class="score-input cal-pens-input" type="number" min="0" max="30" id="cal-ko-ap-${m.id}" value="${hasPens ? r.awayPens : 0}"${!bothKnown ? ' disabled' : ''}>
           </div>
           ${bothKnown ? `<button class="save-btn" onclick="saveKoCalResult('${m.id}','${homeSafe}','${awaySafe}')">Save</button>` : ''}
           ${hasResult ? `<button class="clear-btn" onclick="clearKoCalResult('${m.id}')">Clear result</button>` : ''}
@@ -231,6 +238,13 @@ function clearGroupResult(matchId) {
   refreshAll();
 }
 
+function checkKoCalTie(matchId) {
+  const hg = parseInt(document.getElementById('cal-ko-h-' + matchId)?.value, 10);
+  const ag = parseInt(document.getElementById('cal-ko-a-' + matchId)?.value, 10);
+  const sec = document.getElementById('cal-ko-pens-' + matchId);
+  if (sec) sec.style.display = (!isNaN(hg) && !isNaN(ag) && hg === ag) ? '' : 'none';
+}
+
 function saveKoCalResult(matchId, homeName, awayName) {
   if (!homeName || !awayName) return;
   const hInput = document.getElementById('cal-ko-h-' + matchId);
@@ -241,12 +255,24 @@ function saveKoCalResult(matchId, homeName, awayName) {
   const ag = parseInt(aInput.value, 10);
   if (isNaN(hg) || isNaN(ag) || hg < 0 || ag < 0) return;
 
+  let winner, homePens, awayPens;
   if (hg === ag) {
-    alert('Knockout matches cannot end in a draw. Enter the final score after extra time / penalties.');
-    return;
+    const hpInput = document.getElementById('cal-ko-hp-' + matchId);
+    const apInput = document.getElementById('cal-ko-ap-' + matchId);
+    if (!hpInput || !apInput) return;
+    homePens = parseInt(hpInput.value, 10);
+    awayPens = parseInt(apInput.value, 10);
+    if (isNaN(homePens) || isNaN(awayPens) || homePens < 0 || awayPens < 0) return;
+    if (homePens === awayPens) {
+      alert('Penalty shootout cannot end in a tie. Please re-enter the penalty scores.');
+      return;
+    }
+    winner = homePens > awayPens ? homeName : awayName;
+  } else {
+    winner = hg > ag ? homeName : awayName;
   }
 
-  Storage.setKnockoutResult(matchId, hg, ag, hg > ag ? homeName : awayName);
+  Storage.setKnockoutResult(matchId, hg, ag, winner, homePens, awayPens);
   refreshAll();
 }
 

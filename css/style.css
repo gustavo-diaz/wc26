@@ -705,6 +705,55 @@ main {
   margin-top: 20px;
 }
 
+/* Penalty shootout — bracket slot display */
+.slot-pens {
+  text-align: center;
+  font-size: 10px;
+  color: var(--muted);
+  padding: 2px 8px 4px;
+  letter-spacing: 0.3px;
+}
+
+/* Penalty shootout — bracket entry panel */
+.ko-pens-section {
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.ko-pens-label {
+  color: var(--amber);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Penalty shootout — calendar card */
+.cal-pens-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.cal-pens-label {
+  color: var(--amber);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-right: 2px;
+}
+
+.cal-pens-input {
+  width: 38px;
+  height: 30px;
+  font-size: 14px;
+}
+
 /* ── Champion display ───────────────────────────────────────────────────────── */
 .champion-col {
   display: flex;
